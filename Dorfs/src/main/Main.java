@@ -22,19 +22,19 @@ public class Main extends JPanel{
 		f.setFocusable(true);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//Automate this
-		Dorf d1 = new Dorf(0,0,"A");
-		Dorf d2 = new Dorf(10,10,"B");
-		game.dorfs.add(d1);
-		game.dorfs.add(d2);
-		game.entityMap[0][0] = d1;
-		game.entityMap[10][10] = d1;
-		Relationship r = new Relationship(d1,d2);
-		Conversation c = new Conversation(d1,d2);
-		int a = c.getAgreeability();
+//		Relationship r = new Relationship(d1,d2);
+//		Conversation c = new Conversation(d1,d2);
 		while(true){
 			m.repaint();
+			game.update();
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 	}
+	
 	public void paint(Graphics g){
 		super.paint(g);
 		g.setColor(Color.BLACK);

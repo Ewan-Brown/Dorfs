@@ -1,9 +1,14 @@
 
 package main;
 
-import static main.Stuff.*;
+import static main.Stuff.LIKE_RANGE;
+import static main.Stuff.OPINIONS_NUM;
+import static main.Stuff.rand;
 
 import java.util.HashMap;
+
+import ai.states.Idle;
+import ai.states.State;
 public class Dorf extends Entity{
 	//TODO Better name than 'things' please
 	/*Array of 10 integers, each cell being a different concept, each value being his feelings.
@@ -21,19 +26,27 @@ public class Dorf extends Entity{
 	*  -1    0  =  0
 	*  -1    1  = -1  -
 	*/	
+	public double fatigue = 0;
 	HashMap<Integer,Relationship> relationships = new HashMap<Integer,Relationship>();
-	int[] opinions = new int[OPINIONS_NUM];
-	int ID;
-	String name;
-	State state;
+	public int[] opinions = new int[OPINIONS_NUM];
+	public int ID;
+	public String name;
+	public State state;
 	public Dorf(int x, int y, String n){
-		
-		
 		super(x,y);
+		state = new Idle(this);
+		changeDir(Stuff.getRandomDirection());
 		name = n;
 		for(int i = 0 ; i < opinions.length;i++){
 			opinions[i] = rand.nextInt(LIKE_RANGE * 2 + 1) - LIKE_RANGE;
 		}
+	}
+	public void update(){
+		state.update();
+	}
+	public void onMove(){
+		super.onMove();
+		fatigue += 1;
 	}
 	public void printThings(){
 		if(opinions[0] > 0) System.out.print(" "); // Aesthetic spacer for negatives
