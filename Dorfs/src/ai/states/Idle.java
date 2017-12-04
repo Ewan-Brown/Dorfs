@@ -1,5 +1,7 @@
 package ai.states;
 
+import ai.transitions.Tired;
+import ai.transitions.Transition;
 import main.Dorf;
 import main.Stuff;
 
@@ -9,6 +11,7 @@ public class Idle extends State {
 	int maxMoves = 5;
 	public Idle(Dorf d){
 		super(d);
+		transitions.add(new Tired(d));
 	}
 	public void update(){
 		boolean b = d.tryMove();
@@ -18,5 +21,11 @@ public class Idle extends State {
 			d.changeDir(Stuff.getRandomDirection());
 		}
 	}
+	public void checkTransitions(){
+		for(Transition t : transitions){
+			
+		}
+	}
+	
 	
 }
