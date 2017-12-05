@@ -13,20 +13,23 @@ public class Entity extends GameObject{
 		this.dir = dir;
 		moveTime = 0;
 	}
+	public boolean ableToMove(){
+		return true;
+	}
 	public boolean tryMove(){
-		if(Main.game.isLegalMove(dir.x + x, dir.y + y)){
+		if(canMove()){
 			Main.game.moveEntity(this, dir.x + x, dir.y + y);
-			onMove();
+			onMove(dir.x, dir.y);
 			return true;
 		}
 		else{
 			return false;
 		}
 	}
-	public void onMove(){
+	public void onMove(int x, int y){
 		moveTime += 1;
 	}
 	public boolean canMove(){
-		return Main.game.isLegalMove(dir.x + x, dir.y + y);
+		return Main.game.isLegalMove(dir.x + x, dir.y + y) && ableToMove();
 	}
 }

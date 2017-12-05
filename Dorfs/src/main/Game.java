@@ -18,7 +18,7 @@ public class Game {
 				entityMap[x][y] = null;
 			}
 		}
-		for(int i = 0; i < 10;i++){
+		for(int i = 0; i < 100;i++){
 			addDorf(Stuff.rand.nextInt(w),Stuff.rand.nextInt(h));
 		}
 	}

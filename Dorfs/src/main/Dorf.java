@@ -5,6 +5,7 @@ import static main.Stuff.LIKE_RANGE;
 import static main.Stuff.OPINIONS_NUM;
 import static main.Stuff.rand;
 
+import java.awt.Color;
 import java.util.HashMap;
 
 import ai.states.Idle;
@@ -44,9 +45,15 @@ public class Dorf extends Entity{
 	public void update(){
 		state.update();
 	}
-	public void onMove(){
-		super.onMove();
-		fatigue += 1;
+	public Color getColor(){
+		return state.getColor();
+	}
+	public void onMove(int x, int y){
+		super.onMove(x,y);
+		fatigue += Math.sqrt(x*x + y*y);
+	}
+	public boolean ableTomove(){
+		return state.canMove();
 	}
 	public void printThings(){
 		if(opinions[0] > 0) System.out.print(" "); // Aesthetic spacer for negatives

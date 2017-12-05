@@ -1,5 +1,6 @@
 package ai.states;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 import ai.transitions.Transition;
@@ -13,19 +14,32 @@ public abstract class State {
 	//DRAW ME OUT BOIO
 	//Substates - figure that one out boy?
 	ArrayList<State> substates; //Substates, if none then this is empty (duh) SHould this be a separate class? 
-	ArrayList<Transition> transitions; //Exits!
+	ArrayList<Transition> transitions = new ArrayList<Transition>(); //Exits!
 	Dorf d; //Parent pointer
+	public Color getColor(){
+		return Color.BLACK;
+	}
 	public void update(){
-							//main loop!
+		checkExits();
+		//main loop!
 	}
 	public void checkExits(){ //Check transition exits and exit with the one that has priority
-		
+		for(Transition t : transitions){
+			if(t.isOpen()){ //TODO Implement priority system
+				System.out.println(t.getClass());
+				t.onTransition();
+				switchState(t.getState());
+			}
+		}
+	}
+	public boolean canMove(){
+		return true;
 	}
 	public void onExit(){ //General exit
-		
+
 	}
 	public void onEntry(){ //General entry
-		
+
 	}
 	public State (Dorf d){
 		this.d = d;

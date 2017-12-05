@@ -40,10 +40,13 @@ public class Main extends JPanel{
 		g.setColor(Color.BLACK);
 		for(int c = 0; c < game.w;c++){
 			for(int r = 0; r < game.h;r++){
-				if(game.entityMap[c][r] != null){
+				Entity e = game.entityMap[c][r];
+				if(e != null){
+					g.setColor(e.getColor());
 					g.fillRect(c * 10, r * 10, 10, 10);
 				}
 				else{
+					g.setColor(Color.WHITE);
 					g.drawRect(c * 10, r * 10, 10, 10);
 				}
 			}

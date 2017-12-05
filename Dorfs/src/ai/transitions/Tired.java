@@ -1,11 +1,14 @@
 package ai.transitions;
 
+import java.awt.Color;
+
 import ai.states.Idle;
+import ai.states.Rest;
 import ai.states.State;
 import main.Dorf;
 
 public class Tired extends Transition{
-	double fatigueThreshold = 10;
+	double fatigueThreshold = 20;
 	public Tired(Dorf d){
 		super(d);
 	}
@@ -14,7 +17,7 @@ public class Tired extends Transition{
 			return true;
 		}else return false;
 	}
-	public State newState(){
-		return new Idle(d);
+	public State getState(){
+		return new Rest(d);
 	}
 }
