@@ -11,7 +11,7 @@ public class Main extends JPanel{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	static Game game;
+	public static Game game;
 	public static void main(String[] args){
 		game = new Game();
 		JFrame f = new JFrame();
@@ -34,7 +34,7 @@ public class Main extends JPanel{
 			}
 		}
 	}
-	
+	int size = 7;
 	public void paint(Graphics g){
 		super.paint(g);
 		g.setColor(Color.BLACK);
@@ -43,11 +43,11 @@ public class Main extends JPanel{
 				Entity e = game.entityMap[c][r];
 				if(e != null){
 					g.setColor(e.getColor());
-					g.fillRect(c * 10, r * 10, 10, 10);
+					g.fillRect(c * size, r * size, size, size);
 				}
 				else{
 					g.setColor(Color.WHITE);
-					g.drawRect(c * 10, r * 10, 10, 10);
+					g.drawRect(c * size, r * size, size, size);
 				}
 			}
 		}

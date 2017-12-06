@@ -26,7 +26,6 @@ public abstract class State {
 	public void checkExits(){ //Check transition exits and exit with the one that has priority
 		for(Transition t : transitions){
 			if(t.isOpen()){ //TODO Implement priority system
-				System.out.println(t.getClass());
 				t.onTransition();
 				switchState(t.getState());
 			}
@@ -45,6 +44,8 @@ public abstract class State {
 		this.d = d;
 	}
 	public void switchState(State s){
+		d.state.onExit();
 		d.state = s;
+		s.onEntry();
 	}
 }

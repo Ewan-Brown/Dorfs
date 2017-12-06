@@ -2,9 +2,12 @@ package main;
 
 import java.util.ArrayList;
 
+import ai.states.Find;
+import ai.states.Idle;
+
 public class Game {
-	//ENtities are anything that moves.
-	//TIles are static spots
+	//Entities are anything that moves.
+	//Tiles are static spots
 	int w = 100;
 	int h = 100;
 	int idCounter = 0;
@@ -28,8 +31,15 @@ public class Game {
 		dorfs.add(d);
 	}
 	public void update(){
-		for(Dorf d : dorfs){
+		for(int i = 0; i < dorfs.size();i++){
+			Dorf d = dorfs.get(i);
 			d.update();
+			if(d.state instanceof Idle){
+				if(Stuff.rand.nextDouble() < 0.01){
+					Dorf d2 = dorfs.get((i + 1) % dorfs.size());
+					d.state.switchState(new Find(d,d2));
+				}
+			}
 		}
 	}
 	public void moveEntity(Entity e, int x, int y){

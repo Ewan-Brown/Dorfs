@@ -3,7 +3,6 @@ package ai.states;
 import java.awt.Color;
 
 import ai.transitions.Tired;
-import ai.transitions.Transition;
 import main.Dorf;
 import main.Stuff;
 

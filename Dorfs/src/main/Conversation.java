@@ -1,7 +1,12 @@
 package main;
 
+import static main.Stuff.LIKE_RANGE;
+import static main.Stuff.MAX_CONVO_TOPICS;
+import static main.Stuff.MIN_CONVO_TOPICS;
+import static main.Stuff.OPINIONS_NUM;
+import static main.Stuff.rand;
+
 import java.util.ArrayList;
-import static main.Stuff.*;
 
 public class Conversation {
 

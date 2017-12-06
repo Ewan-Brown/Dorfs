@@ -1,15 +1,15 @@
 package main;
 
-import main.Stuff.Direction;
+import main.Stuff.MovingDirection;
 
 public class Entity extends GameObject{
 
-	private Direction dir;
+	public MovingDirection dir;
 	public int moveTime = 0;
 	public Entity(int x, int y){
 		super(x,y);
 	}
-	public void changeDir(Direction dir){
+	public void changeDir(MovingDirection dir){
 		this.dir = dir;
 		moveTime = 0;
 	}

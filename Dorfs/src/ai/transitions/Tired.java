@@ -1,8 +1,5 @@
 package ai.transitions;
 
-import java.awt.Color;
-
-import ai.states.Idle;
 import ai.states.Rest;
 import ai.states.State;
 import main.Dorf;

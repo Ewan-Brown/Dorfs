@@ -1,6 +1,6 @@
 package main;
 
-import static main.Stuff.*;
+import static main.Stuff.OPINIONS_NUM;
 
 public class Relationship {
 
