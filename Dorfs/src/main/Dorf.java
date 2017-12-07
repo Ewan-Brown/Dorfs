@@ -28,7 +28,7 @@ public class Dorf extends Entity{
 	*  -1    1  = -1  -
 	*/	
 	public double fatigue = 0;
-	HashMap<Integer,Relationship> relationships = new HashMap<Integer,Relationship>();
+	public HashMap<Integer,Relationship> relationships = new HashMap<Integer,Relationship>();
 	public int[] opinions = new int[OPINIONS_NUM];
 	public int ID;
 	public String name;
@@ -41,6 +41,15 @@ public class Dorf extends Entity{
 		for(int i = 0 ; i < opinions.length;i++){
 			opinions[i] = rand.nextInt(LIKE_RANGE * 2 + 1) - LIKE_RANGE;
 		}
+	}
+	public boolean hasRelationshipWith(Dorf target){
+		if(relationships.containsKey(target.ID)){
+			return true;
+		}
+		else{
+			relationships.put(target.ID, new Relationship(this,target));
+		}
+		return false;
 	}
 	public void update(){
 		state.update();

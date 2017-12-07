@@ -8,8 +8,8 @@ import ai.states.Idle;
 public class Game {
 	//Entities are anything that moves.
 	//Tiles are static spots
-	int w = 100;
-	int h = 100;
+	int w = 20;
+	int h = 20;
 	int idCounter = 0;
 	public Entity[][] entityMap = new Entity[w][h];
 	public ArrayList<Dorf> dorfs = new ArrayList<Dorf>();
@@ -21,23 +21,26 @@ public class Game {
 				entityMap[x][y] = null;
 			}
 		}
-		for(int i = 0; i < 100;i++){
+		for(int i = 0; i < 10;i++){
 			addDorf(Stuff.rand.nextInt(w),Stuff.rand.nextInt(h));
 		}
 	}
 	public void addDorf(int x, int y){
 		Dorf d = new Dorf(x,y,idCounter+"");
+		d.ID = idCounter;
+		idCounter++;
 		entityMap[x][y] = d;
 		dorfs.add(d);
 	}
 	public void update(){
 		for(int i = 0; i < dorfs.size();i++){
 			Dorf d = dorfs.get(i);
+//			System.out.println(d.relationships.size());
 			d.update();
 			if(d.state instanceof Idle){
 				if(Stuff.rand.nextDouble() < 0.01){
-					Dorf d2 = dorfs.get((i + 1) % dorfs.size());
-					d.state.switchState(new Find(d,d2));
+//					Dorf d2 = dorfs.get((i + 1) % dorfs.size());
+//					d.state.switchState(new Find(d,d2));
 				}
 			}
 		}

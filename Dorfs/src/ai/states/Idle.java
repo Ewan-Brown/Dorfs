@@ -2,6 +2,7 @@ package ai.states;
 
 import java.awt.Color;
 
+import ai.transitions.Meet;
 import ai.transitions.Tired;
 import main.Dorf;
 import main.Stuff;
@@ -13,6 +14,7 @@ public class Idle extends State {
 	public Idle(Dorf d){
 		super(d);
 		transitions.add(new Tired(d));
+		transitions.add(new Meet(d));
 	}
 	public Color getColor(){
 		return Color.BLUE;

@@ -13,7 +13,6 @@ public class Relationship {
 		d[1] = d2;
 		d1.relationships.put(d2.ID, this);
 		d2.relationships.put(d1.ID, this);
-
 		calculateInherent();
 	}
 	
